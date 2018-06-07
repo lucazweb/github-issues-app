@@ -30,6 +30,7 @@ export const SidebarContainer = styled.div`
     background: #669966;
     border: 1px solid #669966;
     color:white;
+    width:42px;
     cursor: pointer;
     &:hover{
       background:green;
@@ -113,4 +114,13 @@ export const RepoListBox = styled.ul`
       font-size:0.9em;
     }
   }
+`;
+
+export const InfoMessage = styled.h2`
+  font-size:1.3em;
+  text-align:center;
+  color: #666;
+  padding:12px;
+  font-weight: normal;
+
 `;

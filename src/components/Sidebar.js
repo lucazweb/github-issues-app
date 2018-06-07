@@ -12,21 +12,7 @@ const SidebarBox = () => (
         <h3>React</h3>
         <span> Facebook</span>
       </li>
-      <li>
-        <img src="https://avatars3.githubusercontent.com/u/69631?v=4" alt="React" />
-        <h3>React</h3>
-        <span> Facebook</span>
-      </li>
-      <li>
-        <img src="https://avatars3.githubusercontent.com/u/69631?v=4" alt="React" />
-        <h3>React</h3>
-        <span> Facebook</span>
-      </li>
-      <li>
-        <img src="https://avatars3.githubusercontent.com/u/69631?v=4" alt="React" />
-        <h3>React</h3>
-        <span> Facebook</span>
-      </li>
+
     </RepoListBox>
   </SidebarContainer>
 );
