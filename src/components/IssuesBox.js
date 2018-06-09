@@ -1,16 +1,36 @@
 import React, { Component } from 'react';
 import IssuesList from './IssuesList';
 import { IssuesContainer, InfoMessage } from '../css/main';
+import api from '../services/api';
 
 export default class IssuesBox extends Component {
-  constructor(props) {
+  constructor() {
     super();
     this.state = {
-      repository: props.repository,
+      repository: null,
       issues: [],
     };
   }
 
+  componentDidMount(){
+    console.log(this.props);
+    this.handleIssues(this.props.selectedRepository, 'all');
+  };
+
+  handleIssues = async (repository, filter) => {
+    try {
+      const response = await api.get(`/repos/${repository.owner.login}/${repository.name}/issues?state=${filter}`);
+      console.log(response);
+      this.setState({ issues: response.data });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  handleIssuesFilter = (filter) => {
+    console.log(filter);
+    this.handleIssues(this.props.selectedRepository, filter);
+  };
 
   render() {
     return (
@@ -23,14 +43,16 @@ export default class IssuesBox extends Component {
                 <h3>{this.props.selectedRepository.name}</h3>
                 <span> {this.props.selectedRepository.owner.login}</span>
               </div>
-              <select>
-                <option> Abertas </option>
+              <select onChange={e => this.handleIssuesFilter(e.target.value)}>
+                <option value="all"> Todas </option>
+                <option value="open"> Abertas </option>
+                <option value="closed"> Fechadas </option>
               </select>
             </header> :
             <InfoMessage> Selecione um repositório </InfoMessage>
         }
 
-        <IssuesList />
+        <IssuesList issues={this.state.issues} />
       </IssuesContainer>
     );
   }

@@ -30,6 +30,10 @@ export default class Main extends Component {
     }
   }
 
+  handlerSelectedRepository = (repository) => {
+    console.log(repository);
+  }
+
   render() {
     return (
       <Container className="App">
@@ -51,7 +55,11 @@ export default class Main extends Component {
             }
           </RepoListBox>
         </SidebarContainer>
-        <IssuesBox selectedRepository={this.state.selectedRepository} />
+        {
+          this.state.selectedRepository !== null &&
+          <IssuesBox selectedRepository={this.state.selectedRepository} />
+        }
+
       </Container>
     );
   }

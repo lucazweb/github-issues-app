@@ -1,15 +1,20 @@
 import React, { Fragment } from 'react';
 import { IssueBox } from './style';
 
-const IssuesList = () => (
+const IssuesList = ({ issues }) => (
   <Fragment>
-    <IssueBox>
-      <img src="https://randomuser.me/api/portraits/women/31.jpg" alt="" />
-      <div className="issue-box-info">
-        <h3> Problem doing something </h3>
-        <button> Abrir ISSUE </button>
-      </div>
-    </IssueBox>
+    {
+      issues.map(issue => (
+        <IssueBox key={issue.id}>
+          <img src={issue.user.avatar_url} alt={issue.user.login} />
+          <div className="issue-box-info">
+            <h3> {issue.title} </h3>
+            <button> Abrir ISSUE </button>
+          </div>
+        </IssueBox>
+      ))
+    }
+
   </Fragment>
 );
 

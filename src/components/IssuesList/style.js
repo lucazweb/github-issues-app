@@ -20,6 +20,10 @@ export const IssueBox = styled.div`
 .issue-box-info{
   h3{
     font-size:0.8em;
+    display: block;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+    overflow:hidden;
   }
 
   button{
