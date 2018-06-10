@@ -26,10 +26,12 @@ export const IssueBox = styled.div`
     overflow:hidden;
   }
 
-  button{
+  a{
     width:135px;
     margin-top:4px;
     padding: 2px 8px;
+    font-size: 0.8em;
+    text-decoration:none;
     border:1px solid transparent;
     background: purple;
     color:white;

@@ -9,21 +9,33 @@ export default class IssuesBox extends Component {
     this.state = {
       repository: null,
       issues: [],
+      isLoading: false,
     };
   }
 
-  componentDidMount(){
+  componentDidMount() {
     console.log(this.props);
     this.handleIssues(this.props.selectedRepository, 'all');
-  };
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.selectedRepository !== this.props.selectedRepository) {
+      console.log('deve ser atualizado');
+      this.handleIssues(this.props.selectedRepository, 'all');
+    }
+  }
+
 
   handleIssues = async (repository, filter) => {
     try {
+      this.setState({ isLoading: true })
       const response = await api.get(`/repos/${repository.owner.login}/${repository.name}/issues?state=${filter}`);
       console.log(response);
       this.setState({ issues: response.data });
     } catch (err) {
       console.log(err);
+    } finally {
+      this.setState({ isLoading: false });
     }
   };
 
@@ -52,7 +64,17 @@ export default class IssuesBox extends Component {
             <InfoMessage> Selecione um repositório </InfoMessage>
         }
 
-        <IssuesList issues={this.state.issues} />
+        {
+          this.state.isLoading && <h1> Carregando .. </h1>
+        }
+
+        {
+          ((this.state.issues.length > 0) && (!this.state.isLoading)) ?
+            <IssuesList issues={this.state.issues} />
+          : <InfoMessage> Sem Issues para esse respositório </InfoMessage>
+        }
+
+
       </IssuesContainer>
     );
   }

@@ -42,6 +42,9 @@ export default class Main extends Component {
             <input className="search-input" onChange={e => this.setState({ repositoryInput: e.target.value }) } value={this.state.repositoryInput} placeholder="user/repository" />
             <button className="btn-search"> { this.state.isLoading ? <i className="fa fa-spinner" aria-hidden="true"></i> : <i className="fa fa-plus-circle" aria-hidden="true"></i> }  </button>
           </form>
+          {
+            this.state.repositories.length === 0 && <h3> Adicione um repositório </h3>
+          }
 
           <RepoListBox>
             {
