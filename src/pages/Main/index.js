@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import IssuesBox from '../../components/IssuesBox';
-import { Container, SidebarContainer, RepoListBox } from '../../css/main';
+import { Container, SidebarContainer, RepoListBox, SideBarMessage } from '../../css/main';
 import api from '../../services/api';
 import '../../../node_modules/font-awesome/css/font-awesome.css';
 
@@ -43,7 +43,7 @@ export default class Main extends Component {
             <button className="btn-search"> { this.state.isLoading ? <i className="fa fa-spinner" aria-hidden="true"></i> : <i className="fa fa-plus-circle" aria-hidden="true"></i> }  </button>
           </form>
           {
-            this.state.repositories.length === 0 && <h3> Adicione um repositório </h3>
+            this.state.repositories.length === 0 && <SideBarMessage> Adicione um repositório <i class="fa fa-hand-pointer-o" aria-hidden="true"></i> </SideBarMessage>
           }
 
           <RepoListBox>

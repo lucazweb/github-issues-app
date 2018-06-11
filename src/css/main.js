@@ -94,8 +94,12 @@ export const RepoListBox = styled.ul`
     width:100%;
     float:left;
     border-bottom:1px solid #f3f3f3;
-    padding-top:10px;
-    padding-bottom:10px;
+    padding:10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    &:hover{
+      background: #f1dfac;
+    }
     img{
       width:40px;
       height:auto;
@@ -120,7 +124,27 @@ export const InfoMessage = styled.h2`
   font-size:1.3em;
   text-align:center;
   color: #666;
-  padding:12px;
+  float: left;
+  display:block;
+  width: 100%;
+  margin: 20px auto;
   font-weight: normal;
 
+`;
+
+export const LoadingBox = styled.div`
+  width:200px;
+  padding-top:20px;
+  margin: 20px auto;
+  float:left;
+`;
+
+export const SideBarMessage = styled.div`
+  padding:20px 25px 10px 0px;
+  text-align:right;
+  color: #666;
+  font-size: 1em;
+  i{
+    font-size:1em;
+  }
 `;

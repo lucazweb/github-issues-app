@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import IssuesList from './IssuesList';
-import { IssuesContainer, InfoMessage } from '../css/main';
+import { IssuesContainer, InfoMessage, LoadingBox } from '../css/main';
 import api from '../services/api';
 
 export default class IssuesBox extends Component {
@@ -65,13 +65,13 @@ export default class IssuesBox extends Component {
         }
 
         {
-          this.state.isLoading && <h1> Carregando .. </h1>
+          this.state.isLoading && <LoadingBox> <img src="https://www.tele2.nl/wp-content/themes/t2responsive/img/spinner.gif" alt="Loading" />  </LoadingBox>
         }
 
         {
           ((this.state.issues.length > 0) && (!this.state.isLoading)) ?
             <IssuesList issues={this.state.issues} />
-          : <InfoMessage> Sem Issues para esse respositório </InfoMessage>
+          : <InfoMessage> <i class="fa fa-hand-spock-o" aria-hidden="true"></i> Sem Issues para esse respositório </InfoMessage>
         }
 
 
