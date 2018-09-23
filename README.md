@@ -1,6 +1,8 @@
 # Git Hub Issues v 1.0
 Aplicação React baseada na API publica do Github, que permite a listagem das Issues dos repositórios; Desenvolvida durante o curso GoReact da RocketSeat (https://rocketseat.com.br/)
 
+![Imagem do projeto](/misc/appscreen.png)
+
 ### Instalação
 
 Necessária a instalação do NodeJS v4+ (https://nodejs.org/) / npm ou Yarn para rodar.
